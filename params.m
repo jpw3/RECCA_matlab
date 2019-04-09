@@ -35,10 +35,26 @@ stimulus_params.neg_reward_value = -5; %cents
 stimulus_params.no_reward_value = 0; %cents
 stimulus_params.reward_prob = 0.8; %80% probability of getting the associated reward, else they receive 0
 
+%timing parameters
+stimulus_params.soa = 0.5; %seconds, soa between fixation cross and stimulus presentation
+stimulus_params.response_limit = 1.5;
+
+% %sounds for use in response feedback
+% stimulus_params.correct_snd = MakeBeep(535,.2); %higher sounds for correct
+% stimulus_params.wrong_snd = MakeBeep(393,.2);
+% stimulus_params.no_resp_snd = MakeBeep(300,.2);
+
 %TRAIN specific parameters
 stimulus_params.TRAIN_nr_trials = 30; %per block
 stimulus_params.TRAIN_nr_blocks = 4;
 
+stimulus_params.mean_lum = 128;
+stimulus_params.background_lum = 220;
+stimulus_params.fix_lum = 155;
+stimulus_params.red = []; %[255,0,0]; % CIE- 35.08, 16.66, -2.09
+stimulus_params.green = [];  %[0,158,0]; % CIE- 4.76, 16.54, 0.36
+
+%gray: 80 ;%CIE- 10.62, 10.87, 17.12
 
 
 
@@ -46,7 +62,9 @@ stimulus_params.TRAIN_nr_blocks = 4;
 stimulus_params.TEST_nr_trials = 72;
 stimulus_params.TEST_nr_blocks = 5;
 
-
+%% Assign parameters to relevant variable names
+dp=display_params;
+sp=stimulus_params;
 end
 
 %% Miscellaneous function definitions

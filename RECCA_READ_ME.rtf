@@ -8,9 +8,9 @@ Experiment 1
 Began coding in Spring 2019
 
 Pipeline:
-Training phase- Call Main script, which sets up parameters from params() function and calls trial(function) iteratively.
+0. Before running any stimulus presentation code, run the tracker calibration routine in calibrate_tracker_new.m. This creates a calibration-dependent transformation matrix that will be applied to every sample retrieved from the tracker.
 
-
+1. Training phase- Call Main script, which sets up parameters from params() function and calls trial(function) iteratively.
 
 
 
@@ -35,3 +35,12 @@ Did: Created skeleton code in params() as well as created Classes for a left and
  
 To-do: Need to finish incorporating parameters, include skeleton code for training Main and Trial scripts, as well as figure out the reach tracking
 aspects. Also must do some work for color.
+
+
+4/8/2019: Jianfei found that the sign of samples retrieved from the reach tracker is off for some trials (e.g., -3.7 is actually 3.7). She will be troubleshooting this week to figure out why that is the problem.
+
+I have traditionally saved data in a cell array for each use in subsequent analyses. However, Jeff and Jianfei etc. save the data into long pre-allocated arrays in an inefficient manner, and save the data after each trial. I plan to do this, but need to ensure I correctly pre-allocate the arrays. I plan to return data from the trial function in a cell array , unpack into the existing arrays created in Main, and then save everything…
+
+Did: Created most of the skeleton code for the TrainingMain and started doing so for the trainingTrial.
+
+To-do: Must create randomization schedule for trial types among the blocks. Must create arrays to hld the variables of interest in the Main script, which will be fed the results of each trial from a returned cell array structure from the trainingTrial function. Then, in the trial function I need to create the timeline of stimulus presentation, including creating the getParams() local function.
